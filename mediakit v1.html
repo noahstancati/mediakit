@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creator Media Kit</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #080808;
+    --dark: #111111;
+    --card: #161616;
+    --border: #222222;
+    --accent: #A855F7;
+    --accent-glow: rgba(168,85,247,0.15);
+    --accent-glow-strong: rgba(168,85,247,0.25);
+    --accent2: #C084FC;
+    --white: #FFFFFF;
+    --muted: #888888;
+    --text: #E8E8E8;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--black);
+    color: var(--text);
+    line-height: 1.5;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 0 80px;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 40px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -200px; left: 50%;
+    transform: translateX(-50%);
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(168,85,247,0.13) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cover-photo {
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: var(--card);
+    border: 3px solid var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; color: var(--muted);
+    margin-bottom: 28px;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(168,85,247,0.25);
+  }
+  .cover-photo span { font-size: 11px; text-align: center; padding: 12px; }
+  .tagline-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(168,85,247,0.12);
+    border: 1px solid rgba(168,85,247,0.35);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 11px; font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .tagline-badge::before { content: '●'; font-size: 8px; }
+  .cover h1 {
+    font-size: clamp(48px, 10vw, 80px);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .cover h1 span { color: var(--accent); }
+  .handles {
+    display: flex; gap: 16px; justify-content: center;
+    margin: 16px 0 32px;
+    flex-wrap: wrap;
+  }
+  .handle { font-size: 14px; font-weight: 600; color: var(--muted); letter-spacing: 0.02em; }
+  .handle span { color: var(--accent2); }
+  .cover-stats { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; }
+  .cover-stat { text-align: center; }
+  .cover-stat .num {
+    font-size: 32px; font-weight: 900;
+    color: var(--white); display: block;
+    letter-spacing: -0.02em;
+  }
+  .cover-stat .label {
+    font-size: 11px; font-weight: 600;
+    color: var(--muted); text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .divider-line {
+    width: 40px; height: 3px;
+    background: var(--accent);
+    margin: 0 auto 40px;
+    border-radius: 2px;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 80px 40px; border-bottom: 1px solid var(--border); }
+  .section-label {
+    font-size: 11px; font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: clamp(28px, 5vw, 40px);
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 40px;
+  }
+  .section-title span { color: var(--accent); }
+
+  /* ── BRANDS ── */
+  .brands-row { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .brand-logo {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    width: 110px; height: 56px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; color: var(--muted);
+    font-weight: 600; letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: border-color 0.2s;
+  }
+  .brand-logo:hover { border-color: var(--accent); }
+
+  /* ── VIDEO GRID ── */
+  .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .video-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .video-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+  .video-thumb {
+    aspect-ratio: 9/16;
+    background: linear-gradient(145deg, #1a1a1a, #222);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 8px; position: relative;
+  }
+  .play-btn {
+    width: 40px; height: 40px;
+    background: rgba(168,85,247,0.15);
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+  }
+  .video-thumb-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; text-align: center; padding: 0 12px; }
+  .video-info { padding: 12px 14px; }
+  .video-info .vid-brand { font-size: 10px; color: var(--accent); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  .video-info .vid-name { font-size: 13px; font-weight: 700; color: var(--white); margin-top: 2px; }
+  .video-info .vid-type { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+  /* ── ABOUT ── */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+  .about-bio { font-size: 15px; line-height: 1.8; color: var(--text); }
+  .about-bio p { margin-bottom: 16px; }
+  .about-bio strong { color: var(--white); }
+  .about-photo {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 8px;
+    color: var(--muted); font-size: 12px; font-weight: 600;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    box-shadow: 0 0 40px rgba(168,85,247,0.1);
+  }
+  .about-photo-icon { font-size: 28px; opacity: 0.4; }
+
+  /* ── METRICS ── */
+  .metrics-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .metric-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px 32px;
+    position: relative; overflow: hidden;
+  }
+  .metric-card::after {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 80px; height: 80px;
+    background: radial-gradient(circle at top right, rgba(168,85,247,0.1), transparent 70%);
+  }
+  .metric-card .m-num { font-size: 44px; font-weight: 900; color: var(--accent); letter-spacing: -0.02em; }
+  .metric-card .m-label { font-size: 15px; font-weight: 600; color: var(--white); margin-top: 6px; }
+  .metric-card .m-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+  /* ── OFFERINGS ── */
+  .offerings-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .offering-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 22px;
+    transition: border-color 0.2s;
+  }
+  .offering-card:hover { border-color: var(--accent); }
+  .offering-icon { font-size: 24px; margin-bottom: 14px; }
+  .offering-card h4 { font-size: 14px; font-weight: 800; color: var(--white); margin-bottom: 10px; }
+  .offering-card p { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+  /* ── RATES ── */
+  .rates-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .rate-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: border-color 0.2s;
+  }
+  .rate-card:hover { border-color: var(--accent); }
+  .rate-card.featured {
+    border-color: var(--accent);
+    background: rgba(168,85,247,0.07);
+    grid-column: span 2;
+    box-shadow: 0 0 30px rgba(168,85,247,0.12);
+  }
+  .rate-left .r-platform { font-size: 11px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; }
+  .rate-left .r-name { font-size: 17px; font-weight: 800; color: var(--white); margin-top: 4px; }
+  .rate-left .r-desc { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .rate-right { text-align: right; }
+  .rate-price { font-size: 28px; font-weight: 900; color: var(--white); letter-spacing: -0.02em; white-space: nowrap; }
+  .rate-price span { font-size: 13px; color: var(--muted); font-weight: 500; }
+  .rate-per { font-size: 12px; color: var(--accent); font-weight: 700; margin-top: 2px; }
+
+  /* ── CTA ── */
+  .cta {
+    text-align: center; padding: 100px 40px;
+    position: relative; overflow: hidden; border-bottom: none;
+  }
+  .cta::before {
+    content: '';
+    position: absolute; bottom: -100px; left: 50%;
+    transform: translateX(-50%);
+    width: 500px; height: 400px;
+    background: radial-gradient(circle, rgba(168,85,247,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta h2 { font-size: clamp(36px, 8vw, 64px); font-weight: 900; color: var(--white); letter-spacing: -0.03em; line-height: 1; margin-bottom: 16px; }
+  .cta h2 span { color: var(--accent); }
+  .cta p { font-size: 16px; color: var(--muted); max-width: 480px; margin: 0 auto 40px; }
+  .cta-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .cta-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent); color: var(--white);
+    font-weight: 800; font-size: 13px;
+    padding: 14px 28px; border-radius: 100px;
+    text-decoration: none; letter-spacing: 0.02em;
+    transition: opacity 0.2s;
+  }
+  .cta-btn:hover { opacity: 0.85; }
+  .cta-btn.outline {
+    background: transparent; border: 2px solid var(--border); color: var(--text);
+  }
+  .cta-btn.outline:hover { border-color: var(--accent); color: var(--accent); }
+  .cta-contact { margin-top: 40px; display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; }
+  .cta-contact a { font-size: 13px; color: var(--muted); text-decoration: none; font-weight: 600; transition: color 0.2s; }
+  .cta-contact a:hover { color: var(--accent); }
+
+  .footer { text-align: center; padding: 32px 40px; font-size: 12px; color: #333; border-top: 1px solid var(--border); }
+
+  @media (max-width: 600px) {
+    section { padding: 60px 24px; }
+    .cover { padding: 60px 24px; }
+    .video-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-grid { grid-template-columns: 1fr; }
+    .metrics-grid { grid-template-columns: 1fr; }
+    .offerings-grid { grid-template-columns: repeat(2, 1fr); }
+    .rates-grid { grid-template-columns: 1fr; }
+    .rate-card.featured { grid-column: span 1; }
+    .cover-stats { gap: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── 1. COVER ── -->
+<div class="cover">
+  <div class="cover-photo"><span>Your Photo Here</span></div>
+  <div class="tagline-badge">Available for Brand Partnerships</div>
+  <h1>[Your <span>Name</span>]</h1>
+  <p style="font-size:14px;color:var(--muted);font-weight:600;letter-spacing:0.05em;margin-bottom:8px;text-transform:uppercase;">UGC Creator · TikTok Shop Affiliate · Viral Product Videos</p>
+  <div class="handles">
+    <span class="handle"><span>@</span>[TikTok Handle]</span>
+    <span style="color:var(--border)">|</span>
+    <span class="handle"><span>@</span>[Instagram Handle]</span>
+    <span style="color:var(--border)">|</span>
+    <span class="handle"><span>@</span>[YouTube Handle]</span>
+  </div>
+  <div class="divider-line"></div>
+  <div class="cover-stats">
+    <div class="cover-stat">
+      <span class="num">[XXK]</span>
+      <span class="label">Followers</span>
+    </div>
+    <div class="cover-stat">
+      <span class="num">[X.XM]</span>
+      <span class="label">Total Views</span>
+    </div>
+    <div class="cover-stat">
+      <span class="num">$[XXK]</span>
+      <span class="label">Lifetime GMV</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── 2. SOCIAL PROOF ── -->
+<section>
+  <div class="section-label">Trusted By</div>
+  <div class="section-title">Brands I've <span>Worked With</span></div>
+  <div class="brands-row">
+    <div class="brand-logo">Brand Logo</div>
+    <div class="brand-logo">Brand Logo</div>
+    <div class="brand-logo">Brand Logo</div>
+    <div class="brand-logo">Brand Logo</div>
+    <div class="brand-logo">Brand Logo</div>
+    <div class="brand-logo">Brand Logo</div>
+    <div class="brand-logo">Brand Logo</div>
+  </div>
+</section>
+
+<!-- ── 3. VIDEO PORTFOLIO ── -->
+<section>
+  <div class="section-label">Portfolio</div>
+  <div class="section-title">Content That <span>Converts</span></div>
+  <div class="video-grid">
+    <div class="video-card">
+      <div class="video-thumb">
+        <div class="play-btn">▶</div>
+        <div class="video-thumb-label">Add Video Thumbnail</div>
+      </div>
+      <div class="video-info">
+        <div class="vid-brand">[Brand Name]</div>
+        <div class="vid-name">Product Demo</div>
+        <div class="vid-type">Shoppable · TikTok Shop</div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-thumb">
+        <div class="play-btn">▶</div>
+        <div class="video-thumb-label">Add Video Thumbnail</div>
+      </div>
+      <div class="video-info">
+        <div class="vid-brand">[Brand Name]</div>
+        <div class="vid-name">Problem / Solution</div>
+        <div class="vid-type">UGC Ad Creative</div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-thumb">
+        <div class="play-btn">▶</div>
+        <div class="video-thumb-label">Add Video Thumbnail</div>
+      </div>
+      <div class="video-info">
+        <div class="vid-brand">[Brand Name]</div>
+        <div class="vid-name">Lifestyle Integration</div>
+        <div class="vid-type">Organic · TikTok</div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-thumb">
+        <div class="play-btn">▶</div>
+        <div class="video-thumb-label">Add Video Thumbnail</div>
+      </div>
+      <div class="video-info">
+        <div class="vid-brand">[Brand Name]</div>
+        <div class="vid-name">Viral Hook Format</div>
+        <div class="vid-type">Paid Ad · Meta</div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-thumb">
+        <div class="play-btn">▶</div>
+        <div class="video-thumb-label">Add Video Thumbnail</div>
+      </div>
+      <div class="video-info">
+        <div class="vid-brand">[Brand Name]</div>
+        <div class="vid-name">Shoppable Review</div>
+        <div class="vid-type">Shoppable · TikTok Shop</div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-thumb">
+        <div class="play-btn">▶</div>
+        <div class="video-thumb-label">Add Video Thumbnail</div>
+      </div>
+      <div class="video-info">
+        <div class="vid-brand">[Brand Name]</div>
+        <div class="vid-name">Unboxing / First Look</div>
+        <div class="vid-type">Organic · TikTok</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 4. ABOUT ── -->
+<section>
+  <div class="section-label">About</div>
+  <div class="section-title">Who I <span>Am</span></div>
+  <div class="about-grid">
+    <div class="about-bio">
+      <p>I'm <strong>[Your Name]</strong> — a UGC creator and TikTok Shop affiliate based in <strong>[Your Location]</strong>. I create short-form content that doesn't just look good — it <strong>sells</strong>.</p>
+      <p>I got into content creation after realising that most product videos feel scripted and fake. My approach is different: I create content that feels like a real recommendation from a real person — because it is.</p>
+      <p>Over the past <strong>[X months/years]</strong>, I've generated over <strong>[X million views]</strong> across TikTok and Instagram, with a focus on health, wellness, beauty, and lifestyle products.</p>
+      <p>I understand the TikTok Shop algorithm, what drives add-to-cart behaviour, and how to position a product in a way that feels native to the feed — not like an ad.</p>
+    </div>
+    <div class="about-photo">
+      <div class="about-photo-icon">🖼</div>
+      <span>Your Photo Here</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── 5. METRICS ── -->
+<section>
+  <div class="section-label">Performance</div>
+  <div class="section-title">Numbers That <span>Matter</span></div>
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="m-num">[X.XM]</div>
+      <div class="m-label">Total Views</div>
+      <div class="m-sub">Across TikTok & Instagram</div>
+    </div>
+    <div class="metric-card">
+      <div class="m-num">$[XXK]</div>
+      <div class="m-label">Total GMV</div>
+      <div class="m-sub">Driven via TikTok Shop affiliate</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 6. OFFERINGS ── -->
+<section>
+  <div class="section-label">Services</div>
+  <div class="section-title">What I <span>Create</span></div>
+  <div class="offerings-grid" style="grid-template-columns: repeat(3,1fr);">
+    <div class="offering-card">
+      <div class="offering-icon">🛍️</div>
+      <h4>TikTok Shop Videos</h4>
+      <p>Shoppable product content built for TikTok Shop — optimised for GMV and add-to-cart conversion.</p>
+    </div>
+    <div class="offering-card">
+      <div class="offering-icon">🎬</div>
+      <h4>UGC Product Videos</h4>
+      <p>Authentic, high-converting product videos for use as paid ad creatives across TikTok Ads, Meta, and YouTube.</p>
+    </div>
+    <div class="offering-card">
+      <div class="offering-icon">💻</div>
+      <h4>UGC Digital Videos</h4>
+      <p>Creator-style video content promoting websites, software, apps, and digital products — native feel, real results.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── 7. RATES ── -->
+<section>
+  <div class="section-label">Investment</div>
+  <div class="section-title">Content <span>Packages</span></div>
+  <div class="rates-grid">
+    <div class="rate-card">
+      <div class="rate-left">
+        <div class="r-platform">TikTok</div>
+        <div class="r-name">1x Video</div>
+        <div class="r-desc">Full edit · Usage rights included</div>
+      </div>
+      <div class="rate-right">
+        <div class="rate-price">$500<span>/video</span></div>
+        <div class="rate-per">$500 per video</div>
+      </div>
+    </div>
+    <div class="rate-card">
+      <div class="rate-left">
+        <div class="r-platform">TikTok</div>
+        <div class="r-name">5x Videos / Month</div>
+        <div class="r-desc">Best for getting started</div>
+      </div>
+      <div class="rate-right">
+        <div class="rate-price">$2,000<span>/mo</span></div>
+        <div class="rate-per">$400 per video</div>
+      </div>
+    </div>
+    <div class="rate-card">
+      <div class="rate-left">
+        <div class="r-platform">TikTok</div>
+        <div class="r-name">10x Videos / Month</div>
+        <div class="r-desc">Best for consistent campaigns</div>
+      </div>
+      <div class="rate-right">
+        <div class="rate-price">$3,000<span>/mo</span></div>
+        <div class="rate-per">$300 per video</div>
+      </div>
+    </div>
+    <div class="rate-card">
+      <div class="rate-left">
+        <div class="r-platform">TikTok</div>
+        <div class="r-name">20x Videos / Month</div>
+        <div class="r-desc">Best for scaling ad creatives</div>
+      </div>
+      <div class="rate-right">
+        <div class="rate-price">$4,500<span>/mo</span></div>
+        <div class="rate-per">$225 per video</div>
+      </div>
+    </div>
+    <div class="rate-card featured">
+      <div class="rate-left">
+        <div class="r-platform" style="color:var(--accent2)">⭐ Most Popular</div>
+        <div class="r-name">30x Videos / Month</div>
+        <div class="r-desc">Maximum output · Best value · Full creative pipeline</div>
+      </div>
+      <div class="rate-right">
+        <div class="rate-price" style="color:var(--accent)">$6,000<span>/mo</span></div>
+        <div class="rate-per" style="color:var(--accent2)">$200 per video</div>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:12px;color:var(--muted);margin-top:20px;">* Custom packages available. Rates vary by usage rights, exclusivity, and turnaround time. Contact to discuss.</p>
+</section>
+
+<!-- ── 8. CTA ── -->
+<section class="cta">
+  <div class="section-label" style="margin-bottom:20px;">Let's Work Together</div>
+  <h2>Ready to Make<br>Content That <span>Sells?</span></h2>
+  <p>I partner with brands who want high-performing short-form content that drives real results — not just views.</p>
+  <div class="cta-links">
+    <a class="cta-btn" href="mailto:[your@email.com]">✉ Email Me</a>
+    <a class="cta-btn outline" href="#">View Full Portfolio</a>
+  </div>
+  <div class="cta-contact">
+    <a href="#">@[TikTok Handle]</a>
+    <a href="#">@[Instagram Handle]</a>
+    <a href="#">[your@email.com]</a>
+  </div>
+</section>
+
+<div class="footer">© 2025 [Your Name] · All Rights Reserved</div>
+
+</body>
+</html>
