@@ -124,11 +124,12 @@
     background: var(--card2);
     border: 1px solid var(--border);
     border-radius: 14px;
-    height: 72px;
+    height: 80px;
     display: flex; align-items: center; justify-content: center;
     padding: 14px 20px;
     transition: all 0.25s ease;
     overflow: hidden;
+    position: relative;
   }
   .brand-tile:hover {
     border-color: rgba(168,85,247,0.5);
@@ -136,14 +137,82 @@
     transform: translateY(-2px);
   }
   .brand-tile img {
-    max-width: 100%; max-height: 44px;
-    width: auto; height: auto;
-    object-fit: contain; display: block;
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 46px;
+    object-fit: contain;
     filter: brightness(0) invert(1);
-    opacity: 0.7;
+    opacity: 0.75;
     transition: opacity 0.25s ease;
+    margin: 0 auto;
   }
   .brand-tile:hover img { opacity: 1; }
+
+  /* ─── TICKER ─── */
+  .ticker-section {
+    padding: 0;
+    border-bottom: none;
+    overflow: hidden;
+    background: var(--black);
+    position: relative;
+  }
+  .ticker-section::before,
+  .ticker-section::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 80px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .ticker-section::before {
+    left: 0;
+    background: linear-gradient(to right, var(--black), transparent);
+  }
+  .ticker-section::after {
+    right: 0;
+    background: linear-gradient(to left, var(--black), transparent);
+  }
+  .ticker-track {
+    display: flex;
+    width: max-content;
+    animation: ticker-scroll 28s linear infinite;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 0;
+  }
+  .ticker-track:hover { animation-play-state: paused; }
+  @keyframes ticker-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .ticker-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 40px;
+    flex-shrink: 0;
+    gap: 14px;
+  }
+  .ticker-item img {
+    height: 28px;
+    width: auto;
+    max-width: 100px;
+    object-fit: contain;
+    display: block;
+    filter: brightness(0) invert(1);
+    opacity: 0.45;
+    transition: opacity 0.25s ease;
+  }
+  .ticker-track:hover .ticker-item img { opacity: 0.7; }
+  .ticker-dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--border);
+    flex-shrink: 0;
+  }
 
   /* ─── VIDEO GRID ─── */
   .video-grid {
@@ -389,14 +458,54 @@
   <div class="section-label">Trusted By</div>
   <div class="section-title">Brands I've <span>Worked With</span></div>
   <div class="brand-grid">
-    <div class="brand-tile"><img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/goli.jpg" alt="Goli Nutrition"></div>
-    <div class="brand-tile"><img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/nello.jpg" alt="Nello Supercalm"></div>
-    <div class="brand-tile"><img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/arrae.jpeg" alt="Arrae"></div>
-    <div class="brand-tile"><img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/boom%20boom%20nasal%20stickssssssssss.png" alt="Boom Boom Nasal Sticks"></div>
-    <div class="brand-tile"><img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/podcastle%20AI.png" alt="Podcastle AI"></div>
-    <div class="brand-tile"><img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/eklipse.jpg" alt="Eklipse.GG"></div>
+    <div class="brand-tile">
+      <img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/goli.jpg" alt="Goli Nutrition"
+           onload="this.style.opacity='0.75'" onerror="this.closest('.brand-tile').innerHTML='<span style=\'color:#444;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase\'>Goli</span>'">
+    </div>
+    <div class="brand-tile">
+      <img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/nello.jpg" alt="Nello Supercalm"
+           onload="this.style.opacity='0.75'" onerror="this.closest('.brand-tile').innerHTML='<span style=\'color:#444;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase\'>Nello</span>'">
+    </div>
+    <div class="brand-tile">
+      <img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/arrae.jpeg" alt="Arrae"
+           onload="this.style.opacity='0.75'" onerror="this.closest('.brand-tile').innerHTML='<span style=\'color:#444;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase\'>Arrae</span>'">
+    </div>
+    <div class="brand-tile">
+      <img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/boom%20boom%20nasal%20stickssssssssss.png" alt="Boom Boom Nasal Sticks"
+           onload="this.style.opacity='0.75'" onerror="this.closest('.brand-tile').innerHTML='<span style=\'color:#444;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase\'>Boom Boom</span>'">
+    </div>
+    <div class="brand-tile">
+      <img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/podcastle%20AI.png" alt="Podcastle AI"
+           onload="this.style.opacity='0.75'" onerror="this.closest('.brand-tile').innerHTML='<span style=\'color:#444;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase\'>Podcastle</span>'">
+    </div>
+    <div class="brand-tile">
+      <img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/eklipse.jpg" alt="Eklipse.GG"
+           onload="this.style.opacity='0.75'" onerror="this.closest('.brand-tile').innerHTML='<span style=\'color:#444;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase\'>Eklipse</span>'">
+    </div>
   </div>
 </section>
+
+<!-- ── TICKER ── -->
+<div class="ticker-section">
+  <div class="ticker-track">
+    <!-- Set 1 -->
+    <div class="ticker-item"><img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/goli.jpg" alt="Goli"><div class="ticker-dot"></div></div>
+    <div class="ticker-item"><img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/nello.jpg" alt="Nello"><div class="ticker-dot"></div></div>
+    <div class="ticker-item"><img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/arrae.jpeg" alt="Arrae"><div class="ticker-dot"></div></div>
+    <div class="ticker-item"><img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/boom%20boom%20nasal%20stickssssssssss.png" alt="Boom Boom"><div class="ticker-dot"></div></div>
+    <div class="ticker-item"><img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/podcastle%20AI.png" alt="Podcastle"><div class="ticker-dot"></div></div>
+    <div class="ticker-item"><img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/eklipse.jpg" alt="Eklipse"><div class="ticker-dot"></div></div>
+    <div class="ticker-item"><img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/terra%20lotus.jpg" alt="Terra Lotus"><div class="ticker-dot"></div></div>
+    <!-- Set 2 — duplicate for seamless loop -->
+    <div class="ticker-item"><img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/goli.jpg" alt="Goli"><div class="ticker-dot"></div></div>
+    <div class="ticker-item"><img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/nello.jpg" alt="Nello"><div class="ticker-dot"></div></div>
+    <div class="ticker-item"><img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/arrae.jpeg" alt="Arrae"><div class="ticker-dot"></div></div>
+    <div class="ticker-item"><img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/boom%20boom%20nasal%20stickssssssssss.png" alt="Boom Boom"><div class="ticker-dot"></div></div>
+    <div class="ticker-item"><img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/podcastle%20AI.png" alt="Podcastle"><div class="ticker-dot"></div></div>
+    <div class="ticker-item"><img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/eklipse.jpg" alt="Eklipse"><div class="ticker-dot"></div></div>
+    <div class="ticker-item"><img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/terra%20lotus.jpg" alt="Terra Lotus"><div class="ticker-dot"></div></div>
+  </div>
+</div>
 
 <!-- ── 3. VIDEO PORTFOLIO ── -->
 <section>
