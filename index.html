@@ -3,294 +3,119 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Creator Media Kit</title>
+<title>Noah Stancati — Media Kit</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
     --black: #080808;
-    --dark: #111111;
     --card: #161616;
     --border: #222222;
     --accent: #A855F7;
-    --accent-glow: rgba(168,85,247,0.15);
-    --accent-glow-strong: rgba(168,85,247,0.25);
     --accent2: #C084FC;
     --white: #FFFFFF;
     --muted: #888888;
     --text: #E8E8E8;
   }
+  body { font-family: 'Inter', sans-serif; background: var(--black); color: var(--text); line-height: 1.5; max-width: 900px; margin: 0 auto; padding: 0 0 80px; }
 
-  body {
-    font-family: 'Inter', sans-serif;
-    background: var(--black);
-    color: var(--text);
-    line-height: 1.5;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 0 80px;
-  }
-
-  /* ── COVER ── */
-  .cover {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 80px 40px;
-    position: relative;
-    overflow: hidden;
-    border-bottom: 1px solid var(--border);
-  }
-  .cover::before {
-    content: '';
-    position: absolute;
-    top: -200px; left: 50%;
-    transform: translateX(-50%);
-    width: 700px; height: 700px;
-    background: radial-gradient(circle, rgba(168,85,247,0.13) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .cover-photo {
-    width: 200px; height: 200px;
-    border-radius: 50%;
-    background: var(--card);
-    border: 3px solid var(--accent);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 13px; color: var(--muted);
-    margin-bottom: 28px;
-    overflow: hidden;
-    box-shadow: 0 0 40px rgba(168,85,247,0.25);
-  }
-  .cover-photo span { font-size: 11px; text-align: center; padding: 12px; }
-  .tagline-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(168,85,247,0.12);
-    border: 1px solid rgba(168,85,247,0.35);
-    border-radius: 100px;
-    padding: 6px 16px;
-    font-size: 11px; font-weight: 600;
-    color: var(--accent);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-  }
+  /* COVER */
+  .cover { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 80px 40px; position: relative; overflow: hidden; border-bottom: 1px solid var(--border); }
+  .cover::before { content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%); width: 700px; height: 700px; background: radial-gradient(circle, rgba(168,85,247,0.13) 0%, transparent 70%); pointer-events: none; }
+  .cover-photo { width: 200px; height: 200px; border-radius: 50%; background: var(--card); border: 3px solid var(--accent); display: flex; align-items: center; justify-content: center; margin-bottom: 28px; overflow: hidden; box-shadow: 0 0 50px rgba(168,85,247,0.3); flex-shrink: 0; }
+  .cover-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .tagline-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(168,85,247,0.12); border: 1px solid rgba(168,85,247,0.35); border-radius: 100px; padding: 6px 16px; font-size: 11px; font-weight: 600; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px; }
   .tagline-badge::before { content: '●'; font-size: 8px; }
-  .cover h1 {
-    font-size: clamp(48px, 10vw, 80px);
-    font-weight: 900;
-    letter-spacing: -0.03em;
-    line-height: 1;
-    color: var(--white);
-    margin-bottom: 8px;
-  }
+  .cover h1 { font-size: clamp(48px, 10vw, 80px); font-weight: 900; letter-spacing: -0.03em; line-height: 1; color: var(--white); margin-bottom: 8px; }
   .cover h1 span { color: var(--accent); }
-  .handles {
-    display: flex; gap: 16px; justify-content: center;
-    margin: 16px 0 32px;
-    flex-wrap: wrap;
-  }
-  .handle { font-size: 14px; font-weight: 600; color: var(--muted); letter-spacing: 0.02em; }
-  .handle span { color: var(--accent2); }
+  .cover-sub { font-size: 14px; color: var(--muted); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 20px; }
+  .handles { display: flex; gap: 20px; justify-content: center; margin-bottom: 32px; flex-wrap: wrap; align-items: center; }
+  .handle-item { display: flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 600; color: var(--muted); }
+  .handle-item .platform-icon { width: 18px; height: 18px; border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .handle-item .platform-icon svg { width: 16px; height: 16px; }
+  .handle-item span.at { color: var(--accent2); }
+  .sep { color: var(--border); font-size: 18px; }
+  .divider-line { width: 40px; height: 3px; background: var(--accent); margin: 0 auto 40px; border-radius: 2px; }
   .cover-stats { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; }
   .cover-stat { text-align: center; }
-  .cover-stat .num {
-    font-size: 32px; font-weight: 900;
-    color: var(--white); display: block;
-    letter-spacing: -0.02em;
-  }
-  .cover-stat .label {
-    font-size: 11px; font-weight: 600;
-    color: var(--muted); text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-  .divider-line {
-    width: 40px; height: 3px;
-    background: var(--accent);
-    margin: 0 auto 40px;
-    border-radius: 2px;
-  }
+  .cover-stat .num { font-size: 32px; font-weight: 900; color: var(--white); display: block; letter-spacing: -0.02em; }
+  .cover-stat .label { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
 
-  /* ── SECTIONS ── */
+  /* SECTIONS */
   section { padding: 80px 40px; border-bottom: 1px solid var(--border); }
-  .section-label {
-    font-size: 11px; font-weight: 700;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    margin-bottom: 12px;
-  }
-  .section-title {
-    font-size: clamp(28px, 5vw, 40px);
-    font-weight: 900;
-    color: var(--white);
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-    margin-bottom: 40px;
-  }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 12px; }
+  .section-title { font-size: clamp(28px, 5vw, 40px); font-weight: 900; color: var(--white); letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 40px; }
   .section-title span { color: var(--accent); }
 
-  /* ── BRANDS ── */
-  .brands-row { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
-  .brand-logo {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    width: 110px; height: 56px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 10px; color: var(--muted);
-    font-weight: 600; letter-spacing: 0.05em;
-    text-transform: uppercase;
-    transition: border-color 0.2s;
-  }
-  .brand-logo:hover { border-color: var(--accent); }
+  /* BRANDS */
+  .brands-row { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; justify-content: flex-start; }
+  .brand-logo { background: var(--card); border: 1px solid var(--border); border-radius: 14px; width: 120px; height: 64px; display: flex; align-items: center; justify-content: center; padding: 10px; transition: border-color 0.2s, box-shadow 0.2s; overflow: hidden; }
+  .brand-logo:hover { border-color: var(--accent); box-shadow: 0 0 20px rgba(168,85,247,0.15); }
+  .brand-logo img { width: 100%; height: 100%; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.75; transition: opacity 0.2s; }
+  .brand-logo:hover img { opacity: 1; }
 
-  /* ── VIDEO GRID ── */
-  .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .video-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    overflow: hidden;
-    transition: transform 0.2s, border-color 0.2s;
-  }
+  /* VIDEO GRID */
+  .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .video-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: transform 0.2s, border-color 0.2s; }
   .video-card:hover { transform: translateY(-4px); border-color: var(--accent); }
-  .video-thumb {
-    aspect-ratio: 9/16;
-    background: linear-gradient(145deg, #1a1a1a, #222);
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    gap: 8px; position: relative;
-  }
-  .play-btn {
-    width: 40px; height: 40px;
-    background: rgba(168,85,247,0.15);
-    border: 2px solid var(--accent);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 14px;
-  }
-  .video-thumb-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; text-align: center; padding: 0 12px; }
-  .video-info { padding: 12px 14px; }
-  .video-info .vid-brand { font-size: 10px; color: var(--accent); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
-  .video-info .vid-name { font-size: 13px; font-weight: 700; color: var(--white); margin-top: 2px; }
-  .video-info .vid-type { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .video-embed-wrap { position: relative; width: 100%; aspect-ratio: 9/16; overflow: hidden; background: #111; }
+  .video-embed-wrap blockquote { margin: 0 !important; padding: 0 !important; width: 100% !important; min-width: unset !important; max-width: unset !important; }
+  .video-embed-wrap iframe { width: 100% !important; height: 100% !important; border: none; }
+  .video-info { padding: 14px 16px 16px; }
+  .view-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--accent); border-radius: 100px; padding: 5px 12px; font-size: 12px; font-weight: 800; color: #fff; letter-spacing: 0.03em; margin-bottom: 8px; }
+  .view-badge::before { content: '▶'; font-size: 9px; }
+  .vid-brand-name { font-size: 13px; font-weight: 700; color: var(--white); }
 
-  /* ── ABOUT ── */
+  /* ABOUT */
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
   .about-bio { font-size: 15px; line-height: 1.8; color: var(--text); }
   .about-bio p { margin-bottom: 16px; }
   .about-bio strong { color: var(--white); }
-  .about-photo {
-    width: 100%;
-    aspect-ratio: 3/4;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    display: flex; align-items: center; justify-content: center;
-    flex-direction: column; gap: 8px;
-    color: var(--muted); font-size: 12px; font-weight: 600;
-    letter-spacing: 0.05em; text-transform: uppercase;
-    box-shadow: 0 0 40px rgba(168,85,247,0.1);
-  }
-  .about-photo-icon { font-size: 28px; opacity: 0.4; }
+  .about-photo { width: 100%; aspect-ratio: 3/4; border-radius: 20px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 0 40px rgba(168,85,247,0.12); }
+  .about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-  /* ── METRICS ── */
+  /* METRICS */
   .metrics-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  .metric-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 40px 32px;
-    position: relative; overflow: hidden;
-  }
-  .metric-card::after {
-    content: '';
-    position: absolute; top: 0; right: 0;
-    width: 80px; height: 80px;
-    background: radial-gradient(circle at top right, rgba(168,85,247,0.1), transparent 70%);
-  }
+  .metric-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 40px 32px; position: relative; overflow: hidden; }
+  .metric-card::after { content: ''; position: absolute; top: 0; right: 0; width: 80px; height: 80px; background: radial-gradient(circle at top right, rgba(168,85,247,0.1), transparent 70%); }
   .metric-card .m-num { font-size: 44px; font-weight: 900; color: var(--accent); letter-spacing: -0.02em; }
   .metric-card .m-label { font-size: 15px; font-weight: 600; color: var(--white); margin-top: 6px; }
   .metric-card .m-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
 
-  /* ── OFFERINGS ── */
+  /* OFFERINGS */
   .offerings-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .offering-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 28px 22px;
-    transition: border-color 0.2s;
-  }
+  .offering-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 28px 22px; transition: border-color 0.2s; }
   .offering-card:hover { border-color: var(--accent); }
   .offering-icon { font-size: 24px; margin-bottom: 14px; }
   .offering-card h4 { font-size: 14px; font-weight: 800; color: var(--white); margin-bottom: 10px; }
   .offering-card p { font-size: 12px; color: var(--muted); line-height: 1.6; }
 
-  /* ── RATES ── */
+  /* RATES */
   .rates-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  .rate-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 28px 24px;
-    display: flex; align-items: center; justify-content: space-between;
-    transition: border-color 0.2s;
-  }
+  .rate-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 28px 24px; display: flex; align-items: center; justify-content: space-between; transition: border-color 0.2s; }
   .rate-card:hover { border-color: var(--accent); }
-  .rate-card.featured {
-    border-color: var(--accent);
-    background: rgba(168,85,247,0.07);
-    grid-column: span 2;
-    box-shadow: 0 0 30px rgba(168,85,247,0.12);
-  }
-  .rate-left .r-platform { font-size: 11px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; }
-  .rate-left .r-name { font-size: 17px; font-weight: 800; color: var(--white); margin-top: 4px; }
-  .rate-left .r-desc { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .rate-card.featured { border-color: var(--accent); background: rgba(168,85,247,0.07); grid-column: span 2; box-shadow: 0 0 30px rgba(168,85,247,0.12); }
+  .r-platform { font-size: 11px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; }
+  .r-name { font-size: 17px; font-weight: 800; color: var(--white); margin-top: 4px; }
+  .r-desc { font-size: 12px; color: var(--muted); margin-top: 4px; }
   .rate-right { text-align: right; }
   .rate-price { font-size: 28px; font-weight: 900; color: var(--white); letter-spacing: -0.02em; white-space: nowrap; }
   .rate-price span { font-size: 13px; color: var(--muted); font-weight: 500; }
   .rate-per { font-size: 12px; color: var(--accent); font-weight: 700; margin-top: 2px; }
 
-  /* ── CTA ── */
-  .cta {
-    text-align: center; padding: 100px 40px;
-    position: relative; overflow: hidden; border-bottom: none;
-  }
-  .cta::before {
-    content: '';
-    position: absolute; bottom: -100px; left: 50%;
-    transform: translateX(-50%);
-    width: 500px; height: 400px;
-    background: radial-gradient(circle, rgba(168,85,247,0.12) 0%, transparent 70%);
-    pointer-events: none;
-  }
+  /* CTA */
+  .cta { text-align: center; padding: 100px 40px; position: relative; overflow: hidden; border-bottom: none; }
+  .cta::before { content: ''; position: absolute; bottom: -100px; left: 50%; transform: translateX(-50%); width: 500px; height: 400px; background: radial-gradient(circle, rgba(168,85,247,0.12) 0%, transparent 70%); pointer-events: none; }
   .cta h2 { font-size: clamp(36px, 8vw, 64px); font-weight: 900; color: var(--white); letter-spacing: -0.03em; line-height: 1; margin-bottom: 16px; }
   .cta h2 span { color: var(--accent); }
   .cta p { font-size: 16px; color: var(--muted); max-width: 480px; margin: 0 auto 40px; }
-  .cta-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-  .cta-btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--accent); color: var(--white);
-    font-weight: 800; font-size: 13px;
-    padding: 14px 28px; border-radius: 100px;
-    text-decoration: none; letter-spacing: 0.02em;
-    transition: opacity 0.2s;
-  }
+  .cta-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: var(--white); font-weight: 800; font-size: 16px; padding: 18px 48px; border-radius: 100px; text-decoration: none; letter-spacing: 0.02em; transition: opacity 0.2s; box-shadow: 0 0 30px rgba(168,85,247,0.3); }
   .cta-btn:hover { opacity: 0.85; }
-  .cta-btn.outline {
-    background: transparent; border: 2px solid var(--border); color: var(--text);
-  }
-  .cta-btn.outline:hover { border-color: var(--accent); color: var(--accent); }
-  .cta-contact { margin-top: 40px; display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; }
-  .cta-contact a { font-size: 13px; color: var(--muted); text-decoration: none; font-weight: 600; transition: color 0.2s; }
-  .cta-contact a:hover { color: var(--accent); }
 
-  .footer { text-align: center; padding: 32px 40px; font-size: 12px; color: #333; border-top: 1px solid var(--border); }
+  /* FOOTER */
+  .footer { text-align: center; padding: 32px 40px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--border); }
+  .footer a { color: var(--accent2); text-decoration: none; font-weight: 600; font-size: 15px; display: block; margin-bottom: 10px; }
+  .footer a:hover { color: var(--accent); }
 
   @media (max-width: 600px) {
     section { padding: 60px 24px; }
@@ -307,166 +132,192 @@
 </head>
 <body>
 
-<!-- ── 1. COVER ── -->
+<!-- 1. COVER -->
 <div class="cover">
-  <div class="cover-photo"><span>Your Photo Here</span></div>
+  <div class="cover-photo">
+    <img src="hero.jpeg" alt="Noah Stancati">
+  </div>
   <div class="tagline-badge">Available for Brand Partnerships</div>
-  <h1>[Your <span>Name</span>]</h1>
-  <p style="font-size:14px;color:var(--muted);font-weight:600;letter-spacing:0.05em;margin-bottom:8px;text-transform:uppercase;">UGC Creator · TikTok Shop Affiliate · Viral Product Videos</p>
+  <h1>Noah <span>Stancati</span></h1>
+  <p class="cover-sub">UGC Creator · TikTok Shop Affiliate · Viral Product Videos</p>
   <div class="handles">
-    <span class="handle"><span>@</span>[TikTok Handle]</span>
-    <span style="color:var(--border)">|</span>
-    <span class="handle"><span>@</span>[Instagram Handle]</span>
-    <span style="color:var(--border)">|</span>
-    <span class="handle"><span>@</span>[YouTube Handle]</span>
+    <!-- TikTok 1 -->
+    <div class="handle-item">
+      <div class="platform-icon">
+        <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
+      </div>
+      <span class="at">@</span>noahstancati
+    </div>
+    <span class="sep">|</span>
+    <!-- TikTok 2 -->
+    <div class="handle-item">
+      <div class="platform-icon">
+        <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
+      </div>
+      <span class="at">@</span>stankyfinds
+    </div>
+    <span class="sep">|</span>
+    <!-- Instagram -->
+    <div class="handle-item">
+      <div class="platform-icon">
+        <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+      </div>
+      <span class="at">@</span>noahstancati
+    </div>
   </div>
   <div class="divider-line"></div>
   <div class="cover-stats">
     <div class="cover-stat">
-      <span class="num">[XXK]</span>
+      <span class="num">500K+</span>
       <span class="label">Followers</span>
     </div>
     <div class="cover-stat">
-      <span class="num">[X.XM]</span>
+      <span class="num">450M+</span>
       <span class="label">Total Views</span>
     </div>
     <div class="cover-stat">
-      <span class="num">$[XXK]</span>
+      <span class="num">$1M+</span>
       <span class="label">Lifetime GMV</span>
     </div>
   </div>
 </div>
 
-<!-- ── 2. SOCIAL PROOF ── -->
+<!-- 2. BRANDS -->
 <section>
   <div class="section-label">Trusted By</div>
   <div class="section-title">Brands I've <span>Worked With</span></div>
   <div class="brands-row">
-    <div class="brand-logo">Brand Logo</div>
-    <div class="brand-logo">Brand Logo</div>
-    <div class="brand-logo">Brand Logo</div>
-    <div class="brand-logo">Brand Logo</div>
-    <div class="brand-logo">Brand Logo</div>
-    <div class="brand-logo">Brand Logo</div>
-    <div class="brand-logo">Brand Logo</div>
+    <div class="brand-logo"><img src="goli.jpg" alt="Goli Nutrition"></div>
+    <div class="brand-logo"><img src="nello.jpg" alt="Nello Supercalm"></div>
+    <div class="brand-logo"><img src="arrae.jpeg" alt="Arrae"></div>
+    <div class="brand-logo"><img src="boom boom nasal stickssssssssss.png" alt="Boom Boom Nasal Sticks"></div>
+    <div class="brand-logo"><img src="podcastle AI.png" alt="Podcastle AI"></div>
+    <div class="brand-logo"><img src="eklipse.jpg" alt="Eklipse.GG"></div>
   </div>
 </section>
 
-<!-- ── 3. VIDEO PORTFOLIO ── -->
+<!-- 3. VIDEO PORTFOLIO -->
 <section>
   <div class="section-label">Portfolio</div>
   <div class="section-title">Content That <span>Converts</span></div>
   <div class="video-grid">
+
     <div class="video-card">
-      <div class="video-thumb">
-        <div class="play-btn">▶</div>
-        <div class="video-thumb-label">Add Video Thumbnail</div>
+      <div class="video-embed-wrap">
+        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@noahdeals/video/7400859836172225835" data-video-id="7400859836172225835" style="max-width:100%;min-width:unset;">
+          <section><a target="_blank" title="@noahdeals" href="https://www.tiktok.com/@noahdeals?refer=embed">@noahdeals</a></section>
+        </blockquote>
       </div>
       <div class="video-info">
-        <div class="vid-brand">[Brand Name]</div>
-        <div class="vid-name">Product Demo</div>
-        <div class="vid-type">Shoppable · TikTok Shop</div>
+        <div class="view-badge">3.9M Views</div>
+        <div class="vid-brand-name">Boom Boom Nasal Sticks</div>
       </div>
     </div>
+
     <div class="video-card">
-      <div class="video-thumb">
-        <div class="play-btn">▶</div>
-        <div class="video-thumb-label">Add Video Thumbnail</div>
+      <div class="video-embed-wrap">
+        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@noahdeals/video/7419056433389620526" data-video-id="7419056433389620526" style="max-width:100%;min-width:unset;">
+          <section><a target="_blank" title="@noahdeals" href="https://www.tiktok.com/@noahdeals?refer=embed">@noahdeals</a></section>
+        </blockquote>
       </div>
       <div class="video-info">
-        <div class="vid-brand">[Brand Name]</div>
-        <div class="vid-name">Problem / Solution</div>
-        <div class="vid-type">UGC Ad Creative</div>
+        <div class="view-badge">2.1M Views</div>
+        <div class="vid-brand-name">Nello Supercalm</div>
       </div>
     </div>
+
     <div class="video-card">
-      <div class="video-thumb">
-        <div class="play-btn">▶</div>
-        <div class="video-thumb-label">Add Video Thumbnail</div>
+      <div class="video-embed-wrap">
+        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@shopbynoah/video/7434372075617406238" data-video-id="7434372075617406238" style="max-width:100%;min-width:unset;">
+          <section><a target="_blank" title="@shopbynoah" href="https://www.tiktok.com/@shopbynoah?refer=embed">@shopbynoah</a></section>
+        </blockquote>
       </div>
       <div class="video-info">
-        <div class="vid-brand">[Brand Name]</div>
-        <div class="vid-name">Lifestyle Integration</div>
-        <div class="vid-type">Organic · TikTok</div>
+        <div class="view-badge">3.6M Views</div>
+        <div class="vid-brand-name">Renpho</div>
       </div>
     </div>
+
     <div class="video-card">
-      <div class="video-thumb">
-        <div class="play-btn">▶</div>
-        <div class="video-thumb-label">Add Video Thumbnail</div>
+      <div class="video-embed-wrap">
+        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@noahdeals/video/7451277251569667374" data-video-id="7451277251569667374" style="max-width:100%;min-width:unset;">
+          <section><a target="_blank" title="@noahdeals" href="https://www.tiktok.com/@noahdeals?refer=embed">@noahdeals</a></section>
+        </blockquote>
       </div>
       <div class="video-info">
-        <div class="vid-brand">[Brand Name]</div>
-        <div class="vid-name">Viral Hook Format</div>
-        <div class="vid-type">Paid Ad · Meta</div>
+        <div class="view-badge">2.7M Views</div>
+        <div class="vid-brand-name">Terra Lotus</div>
       </div>
     </div>
+
     <div class="video-card">
-      <div class="video-thumb">
-        <div class="play-btn">▶</div>
-        <div class="video-thumb-label">Add Video Thumbnail</div>
+      <div class="video-embed-wrap">
+        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@shopbynoah/video/7367782016328289578" data-video-id="7367782016328289578" style="max-width:100%;min-width:unset;">
+          <section><a target="_blank" title="@shopbynoah" href="https://www.tiktok.com/@shopbynoah?refer=embed">@shopbynoah</a></section>
+        </blockquote>
       </div>
       <div class="video-info">
-        <div class="vid-brand">[Brand Name]</div>
-        <div class="vid-name">Shoppable Review</div>
-        <div class="vid-type">Shoppable · TikTok Shop</div>
+        <div class="view-badge">2.7M Views</div>
+        <div class="vid-brand-name">Arrae</div>
       </div>
     </div>
+
     <div class="video-card">
-      <div class="video-thumb">
-        <div class="play-btn">▶</div>
-        <div class="video-thumb-label">Add Video Thumbnail</div>
+      <div class="video-embed-wrap">
+        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@noahstancati/video/7328110144800214278" data-video-id="7328110144800214278" style="max-width:100%;min-width:unset;">
+          <section><a target="_blank" title="@noahstancati" href="https://www.tiktok.com/@noahstancati?refer=embed">@noahstancati</a></section>
+        </blockquote>
       </div>
       <div class="video-info">
-        <div class="vid-brand">[Brand Name]</div>
-        <div class="vid-name">Unboxing / First Look</div>
-        <div class="vid-type">Organic · TikTok</div>
+        <div class="view-badge">2.4M Views</div>
+        <div class="vid-brand-name">Eklipse.GG</div>
       </div>
     </div>
+
   </div>
 </section>
+<script async src="https://www.tiktok.com/embed.js"></script>
 
-<!-- ── 4. ABOUT ── -->
+<!-- 4. ABOUT -->
 <section>
   <div class="section-label">About</div>
   <div class="section-title">Who I <span>Am</span></div>
   <div class="about-grid">
     <div class="about-bio">
-      <p>I'm <strong>[Your Name]</strong> — a UGC creator and TikTok Shop affiliate based in <strong>[Your Location]</strong>. I create short-form content that doesn't just look good — it <strong>sells</strong>.</p>
-      <p>I got into content creation after realising that most product videos feel scripted and fake. My approach is different: I create content that feels like a real recommendation from a real person — because it is.</p>
-      <p>Over the past <strong>[X months/years]</strong>, I've generated over <strong>[X million views]</strong> across TikTok and Instagram, with a focus on health, wellness, beauty, and lifestyle products.</p>
-      <p>I understand the TikTok Shop algorithm, what drives add-to-cart behaviour, and how to position a product in a way that feels native to the feed — not like an ad.</p>
+      <p>Hey! I'm <strong>Noah</strong>, a UGC creator and TikTok Shop affiliate based in <strong>Canada</strong> (with 99% US-targeted accounts). I create short-form content that doesn't just go viral — it <strong>sells</strong>.</p>
+      <p>I got into content creation after realizing that most product videos feel scripted and fake. My approach is very different. I create authentic content that feels like a real recommendation from a real person, because it is. I mix in my personality with my background in marketing to create invaluable videos that truly convert.</p>
+      <p>Over the past <strong>4 years</strong>, I've generated over <strong>450M+ views</strong> across TikTok and Instagram, with a focus on health, wellness, beauty, and lifestyle products.</p>
+      <p>I understand how these social media algorithms work, what drives conversions, and how to position a product in a way that feels organic — not like an ad.</p>
     </div>
     <div class="about-photo">
-      <div class="about-photo-icon">🖼</div>
-      <span>Your Photo Here</span>
+      <img src="about.jpeg" alt="Noah Stancati">
     </div>
   </div>
 </section>
 
-<!-- ── 5. METRICS ── -->
+<!-- 5. METRICS -->
 <section>
   <div class="section-label">Performance</div>
   <div class="section-title">Numbers That <span>Matter</span></div>
   <div class="metrics-grid">
     <div class="metric-card">
-      <div class="m-num">[X.XM]</div>
+      <div class="m-num">450M+</div>
       <div class="m-label">Total Views</div>
       <div class="m-sub">Across TikTok & Instagram</div>
     </div>
     <div class="metric-card">
-      <div class="m-num">$[XXK]</div>
+      <div class="m-num">$1M+</div>
       <div class="m-label">Total GMV</div>
       <div class="m-sub">Driven via TikTok Shop affiliate</div>
     </div>
   </div>
 </section>
 
-<!-- ── 6. OFFERINGS ── -->
+<!-- 6. OFFERINGS -->
 <section>
   <div class="section-label">Services</div>
   <div class="section-title">What I <span>Create</span></div>
-  <div class="offerings-grid" style="grid-template-columns: repeat(3,1fr);">
+  <div class="offerings-grid">
     <div class="offering-card">
       <div class="offering-icon">🛍️</div>
       <h4>TikTok Shop Videos</h4>
@@ -485,7 +336,7 @@
   </div>
 </section>
 
-<!-- ── 7. RATES ── -->
+<!-- 7. RATES -->
 <section>
   <div class="section-label">Investment</div>
   <div class="section-title">Content <span>Packages</span></div>
@@ -549,23 +400,19 @@
   <p style="font-size:12px;color:var(--muted);margin-top:20px;">* Custom packages available. Rates vary by usage rights, exclusivity, and turnaround time. Contact to discuss.</p>
 </section>
 
-<!-- ── 8. CTA ── -->
+<!-- 8. CTA -->
 <section class="cta">
   <div class="section-label" style="margin-bottom:20px;">Let's Work Together</div>
-  <h2>Ready to Make<br>Content That <span>Sells?</span></h2>
+  <h2>Ready to <span>Blow Up</span><br>Your Brand?</h2>
   <p>I partner with brands who want high-performing short-form content that drives real results — not just views.</p>
-  <div class="cta-links">
-    <a class="cta-btn" href="mailto:[your@email.com]">✉ Email Me</a>
-    <a class="cta-btn outline" href="#">View Full Portfolio</a>
-  </div>
-  <div class="cta-contact">
-    <a href="#">@[TikTok Handle]</a>
-    <a href="#">@[Instagram Handle]</a>
-    <a href="#">[your@email.com]</a>
-  </div>
+  <a class="cta-btn" href="mailto:stankaibusiness@gmail.com">✉ &nbsp;Email Me</a>
 </section>
 
-<div class="footer">© 2025 [Your Name] · All Rights Reserved</div>
+<!-- FOOTER -->
+<div class="footer">
+  <a href="mailto:stankaibusiness@gmail.com">stankaibusiness@gmail.com</a>
+  <span style="color:#333;">© 2025 Noah Stancati · All Rights Reserved</span>
+</div>
 
 </body>
 </html>
