@@ -27,17 +27,16 @@
     width: 220px; height: 220px;
     border-radius: 50%;
     border: 4px solid var(--accent);
-    display: flex; align-items: center; justify-content: center;
     margin: 0 auto 28px;
     overflow: hidden;
     box-shadow: 0 0 60px rgba(168,85,247,0.35);
     background: var(--card);
-    position: relative;
+    flex-shrink: 0;
   }
   .cover-photo img {
     width: 100%; height: 100%;
     object-fit: cover;
-    object-position: center top;
+    object-position: 50% 15%;
     display: block;
   }
 
@@ -95,20 +94,15 @@
   .tiktok-wrap {
     position: relative;
     width: 100%;
-    /* TikTok embeds are roughly 9:16 but with extra header/footer UI ~570px tall for 325px wide */
-    height: 480px;
-    overflow: hidden;
+    aspect-ratio: 9 / 16;
     background: #000;
-    border-radius: 0;
   }
   .tiktok-wrap iframe {
     position: absolute;
-    top: 0; left: 50%;
-    transform: translateX(-50%);
-    width: 100% !important;
-    height: 100% !important;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
     border: none;
-    pointer-events: auto;
   }
 
   .video-info { padding: 14px 16px 16px; }
@@ -186,7 +180,7 @@
 <!-- 1. COVER -->
 <div class="cover">
   <div class="cover-photo">
-    <img src="hero.jpeg" alt="Noah Stancati">
+    <img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/hero.jpg" alt="Noah Stancati">
   </div>
   <div class="tagline-badge">Available for Brand Partnerships</div>
   <h1>Noah <span>Stancati</span></h1>
@@ -245,12 +239,12 @@
   <div class="section-label">Trusted By</div>
   <div class="section-title">Brands I've <span>Worked With</span></div>
   <div class="brands-row">
-    <div class="brand-logo"><img src="goli.jpg" alt="Goli Nutrition"></div>
-    <div class="brand-logo"><img src="nello.jpg" alt="Nello Supercalm"></div>
-    <div class="brand-logo"><img src="arrae.jpeg" alt="Arrae"></div>
-    <div class="brand-logo"><img src="boom boom nasal stickssssssssss.png" alt="Boom Boom Nasal Sticks"></div>
-    <div class="brand-logo"><img src="podcastle AI.png" alt="Podcastle AI"></div>
-    <div class="brand-logo"><img src="eklipse.jpg" alt="Eklipse.GG"></div>
+    <div class="brand-logo"><img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/goli.jpg" alt="Goli Nutrition"></div>
+    <div class="brand-logo"><img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/nello.jpg" alt="Nello Supercalm"></div>
+    <div class="brand-logo"><img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/arrae.jpeg" alt="Arrae"></div>
+    <div class="brand-logo"><img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/boom%20boom%20nasal%20stickssssssssss.png" alt="Boom Boom Nasal Sticks"></div>
+    <div class="brand-logo"><img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/podcastle%20AI.png" alt="Podcastle AI"></div>
+    <div class="brand-logo"><img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/eklipse.jpg" alt="Eklipse.GG"></div>
   </div>
 </section>
 
@@ -335,7 +329,7 @@
       <p>I understand how these social media algorithms work, what drives conversions, and how to position a product in a way that feels organic — not like an ad.</p>
     </div>
     <div class="about-photo">
-      <img src="about.jpeg" alt="Noah Stancati">
+      <img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/about.jpeg" alt="Noah Stancati">
     </div>
   </div>
 </section>
