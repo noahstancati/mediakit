@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- If deployed to a subpath (e.g. example.com/mediakit/), uncomment and set: <base href="/mediakit/"> -->
 <title>Noah Stancati — Media Kit</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -234,45 +235,23 @@
     box-shadow: 0 12px 40px rgba(0,0,0,0.4);
   }
 
-  /* Clickable thumbnail that links to TikTok */
-  .video-thumb-link {
-    display: block;
+  /* TikTok full embed — hover to play (official iframe player) */
+  .video-embed-wrap {
     position: relative;
     width: 100%;
     aspect-ratio: 9 / 16;
-    overflow: hidden;
+    min-height: 320px;
     background: #0a0a0a;
-    cursor: pointer;
-    text-decoration: none;
+    border-radius: 12px;
+    overflow: hidden;
   }
-  .video-thumb-link img {
-    width: 100%; height: 100%;
-    object-fit: cover; display: block;
-    transition: transform 0.35s ease;
+  .video-embed-wrap iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 12px;
   }
-  .video-card:hover .video-thumb-link img { transform: scale(1.04); }
-
-  .play-overlay {
-    position: absolute; inset: 0;
-    display: flex; align-items: center; justify-content: center;
-    background: rgba(0,0,0,0.28);
-    transition: background 0.25s ease;
-  }
-  .video-card:hover .play-overlay { background: rgba(0,0,0,0.18); }
-
-  .play-btn-circle {
-    width: 48px; height: 48px; border-radius: 50%;
-    background: rgba(168,85,247,0.85);
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 4px 20px rgba(168,85,247,0.5);
-    transition: all 0.25s ease;
-    backdrop-filter: blur(4px);
-  }
-  .video-card:hover .play-btn-circle {
-    background: var(--accent);
-    transform: scale(1.08);
-  }
-  .play-btn-circle svg { width: 18px; height: 18px; fill: white; margin-left: 3px; }
 
   .video-info { padding: 14px 16px 16px; flex: 1; }
   .view-badge {
@@ -402,7 +381,7 @@
 <!-- ── 1. COVER ── -->
 <div class="cover">
   <div class="cover-photo">
-    <img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/hero.jpg" alt="Noah Stancati">
+    <img src="./hero.jpg" alt="Noah Stancati" loading="eager" fetchpriority="high">
   </div>
   <div class="tagline-badge">Available for Brand Partnerships</div>
   <h1>Noah <span>Stancati</span></h1>
@@ -457,33 +436,33 @@
   <div class="section-label">Trusted By</div>
   <div class="section-title">Brands I've <span>Worked With</span></div>
   <div class="brand-grid">
-    <div class="brand-tile"><img src="logos/goli.png" alt="Goli Nutrition"></div>
-    <div class="brand-tile"><img src="logos/nello.png" alt="Nello Supercalm"></div>
-    <div class="brand-tile"><img src="logos/arrae.png" alt="Arrae"></div>
-    <div class="brand-tile"><img src="logos/boomboom.png" alt="Boom Boom Nasal Sticks"></div>
-    <div class="brand-tile"><img src="logos/podcastle.png" alt="Podcastle AI"></div>
-    <div class="brand-tile"><img src="logos/eklipse.png" alt="Eklipse.GG"></div>
+    <div class="brand-tile"><img src="./logos/goli.jpg" alt="Goli Nutrition"></div>
+    <div class="brand-tile"><img src="./logos/nello.jpg" alt="Nello Supercalm"></div>
+    <div class="brand-tile"><img src="./logos/arrae.jpeg" alt="Arrae"></div>
+    <div class="brand-tile"><img src="./logos/boom-boom-nasal-sticks.png" alt="Boom Boom Nasal Sticks"></div>
+    <div class="brand-tile"><img src="./logos/podcastle-ai.png" alt="Podcastle AI"></div>
+    <div class="brand-tile"><img src="./logos/eklipse.jpg" alt="Eklipse.GG"></div>
   </div>
 </section>
 
 <!-- ── TICKER ── -->
 <div class="ticker-section">
   <div class="ticker-track">
-    <div class="ticker-item"><img src="logos/goli.png" alt="Goli"><div class="ticker-dot"></div></div>
-    <div class="ticker-item"><img src="logos/nello.png" alt="Nello"><div class="ticker-dot"></div></div>
-    <div class="ticker-item"><img src="logos/arrae.png" alt="Arrae"><div class="ticker-dot"></div></div>
-    <div class="ticker-item"><img src="logos/boomboom.png" alt="Boom Boom"><div class="ticker-dot"></div></div>
-    <div class="ticker-item"><img src="logos/podcastle.png" alt="Podcastle"><div class="ticker-dot"></div></div>
-    <div class="ticker-item"><img src="logos/eklipse.png" alt="Eklipse"><div class="ticker-dot"></div></div>
-    <div class="ticker-item"><img src="logos/terralotus.png" alt="Terra Lotus"><div class="ticker-dot"></div></div>
+    <div class="ticker-item"><img src="./logos/goli.jpg" alt="Goli"><div class="ticker-dot"></div></div>
+    <div class="ticker-item"><img src="./logos/nello.jpg" alt="Nello"><div class="ticker-dot"></div></div>
+    <div class="ticker-item"><img src="./logos/arrae.jpeg" alt="Arrae"><div class="ticker-dot"></div></div>
+    <div class="ticker-item"><img src="./logos/boom-boom-nasal-sticks.png" alt="Boom Boom"><div class="ticker-dot"></div></div>
+    <div class="ticker-item"><img src="./logos/podcastle-ai.png" alt="Podcastle"><div class="ticker-dot"></div></div>
+    <div class="ticker-item"><img src="./logos/eklipse.jpg" alt="Eklipse"><div class="ticker-dot"></div></div>
+    <div class="ticker-item"><img src="./logos/terra-lotus.jpg" alt="Terra Lotus"><div class="ticker-dot"></div></div>
     <!-- Set 2 — duplicate for seamless loop -->
-    <div class="ticker-item"><img src="logos/goli.png" alt="Goli"><div class="ticker-dot"></div></div>
-    <div class="ticker-item"><img src="logos/nello.png" alt="Nello"><div class="ticker-dot"></div></div>
-    <div class="ticker-item"><img src="logos/arrae.png" alt="Arrae"><div class="ticker-dot"></div></div>
-    <div class="ticker-item"><img src="logos/boomboom.png" alt="Boom Boom"><div class="ticker-dot"></div></div>
-    <div class="ticker-item"><img src="logos/podcastle.png" alt="Podcastle"><div class="ticker-dot"></div></div>
-    <div class="ticker-item"><img src="logos/eklipse.png" alt="Eklipse"><div class="ticker-dot"></div></div>
-    <div class="ticker-item"><img src="logos/terralotus.png" alt="Terra Lotus"><div class="ticker-dot"></div></div>
+    <div class="ticker-item"><img src="./logos/goli.jpg" alt="Goli"><div class="ticker-dot"></div></div>
+    <div class="ticker-item"><img src="./logos/nello.jpg" alt="Nello"><div class="ticker-dot"></div></div>
+    <div class="ticker-item"><img src="./logos/arrae.jpeg" alt="Arrae"><div class="ticker-dot"></div></div>
+    <div class="ticker-item"><img src="./logos/boom-boom-nasal-sticks.png" alt="Boom Boom"><div class="ticker-dot"></div></div>
+    <div class="ticker-item"><img src="./logos/podcastle-ai.png" alt="Podcastle"><div class="ticker-dot"></div></div>
+    <div class="ticker-item"><img src="./logos/eklipse.jpg" alt="Eklipse"><div class="ticker-dot"></div></div>
+    <div class="ticker-item"><img src="./logos/terra-lotus.jpg" alt="Terra Lotus"><div class="ticker-dot"></div></div>
   </div>
 </div>
 
@@ -494,15 +473,9 @@
   <div class="video-grid">
 
     <div class="video-card">
-      <a class="video-thumb-link" href="https://www.tiktok.com/@noahdeals/video/7400859836172225835" target="_blank" rel="noopener">
-        <img src="https://www.tiktok.com/api/img/?itemId=7400859836172225835&location=0" alt="Boom Boom Nasal Sticks"
-             onerror="this.style.display='none'; this.parentElement.style.background='#1a1a1a';">
-        <div class="play-overlay">
-          <div class="play-btn-circle">
-            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-          </div>
-        </div>
-      </a>
+      <div class="video-embed-wrap" data-video-id="7400859836172225835">
+        <iframe src="https://www.tiktok.com/player/v1/7400859836172225835" allow="fullscreen" title="Boom Boom Nasal Sticks"></iframe>
+      </div>
       <div class="video-info">
         <div class="view-badge">3.9M Views</div>
         <div class="vid-brand-name">Boom Boom Nasal Sticks</div>
@@ -510,15 +483,9 @@
     </div>
 
     <div class="video-card">
-      <a class="video-thumb-link" href="https://www.tiktok.com/@noahdeals/video/7419056433389620526" target="_blank" rel="noopener">
-        <img src="https://www.tiktok.com/api/img/?itemId=7419056433389620526&location=0" alt="Nello Supercalm"
-             onerror="this.style.display='none'; this.parentElement.style.background='#1a1a1a';">
-        <div class="play-overlay">
-          <div class="play-btn-circle">
-            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-          </div>
-        </div>
-      </a>
+      <div class="video-embed-wrap" data-video-id="7419056433389620526">
+        <iframe src="https://www.tiktok.com/player/v1/7419056433389620526" allow="fullscreen" title="Nello Supercalm"></iframe>
+      </div>
       <div class="video-info">
         <div class="view-badge">2.1M Views</div>
         <div class="vid-brand-name">Nello Supercalm</div>
@@ -526,15 +493,9 @@
     </div>
 
     <div class="video-card">
-      <a class="video-thumb-link" href="https://www.tiktok.com/@shopbynoah/video/7434372075617406238" target="_blank" rel="noopener">
-        <img src="https://www.tiktok.com/api/img/?itemId=7434372075617406238&location=0" alt="Renpho"
-             onerror="this.style.display='none'; this.parentElement.style.background='#1a1a1a';">
-        <div class="play-overlay">
-          <div class="play-btn-circle">
-            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-          </div>
-        </div>
-      </a>
+      <div class="video-embed-wrap" data-video-id="7434372075617406238">
+        <iframe src="https://www.tiktok.com/player/v1/7434372075617406238" allow="fullscreen" title="Renpho"></iframe>
+      </div>
       <div class="video-info">
         <div class="view-badge">3.6M Views</div>
         <div class="vid-brand-name">Renpho</div>
@@ -542,15 +503,9 @@
     </div>
 
     <div class="video-card">
-      <a class="video-thumb-link" href="https://www.tiktok.com/@noahdeals/video/7451277251569667374" target="_blank" rel="noopener">
-        <img src="https://www.tiktok.com/api/img/?itemId=7451277251569667374&location=0" alt="Terra Lotus"
-             onerror="this.style.display='none'; this.parentElement.style.background='#1a1a1a';">
-        <div class="play-overlay">
-          <div class="play-btn-circle">
-            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-          </div>
-        </div>
-      </a>
+      <div class="video-embed-wrap" data-video-id="7451277251569667374">
+        <iframe src="https://www.tiktok.com/player/v1/7451277251569667374" allow="fullscreen" title="Terra Lotus"></iframe>
+      </div>
       <div class="video-info">
         <div class="view-badge">2.7M Views</div>
         <div class="vid-brand-name">Terra Lotus</div>
@@ -558,15 +513,9 @@
     </div>
 
     <div class="video-card">
-      <a class="video-thumb-link" href="https://www.tiktok.com/@shopbynoah/video/7367782016328289578" target="_blank" rel="noopener">
-        <img src="https://www.tiktok.com/api/img/?itemId=7367782016328289578&location=0" alt="Arrae"
-             onerror="this.style.display='none'; this.parentElement.style.background='#1a1a1a';">
-        <div class="play-overlay">
-          <div class="play-btn-circle">
-            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-          </div>
-        </div>
-      </a>
+      <div class="video-embed-wrap" data-video-id="7367782016328289578">
+        <iframe src="https://www.tiktok.com/player/v1/7367782016328289578" allow="fullscreen" title="Arrae"></iframe>
+      </div>
       <div class="video-info">
         <div class="view-badge">2.7M Views</div>
         <div class="vid-brand-name">Arrae</div>
@@ -574,15 +523,9 @@
     </div>
 
     <div class="video-card">
-      <a class="video-thumb-link" href="https://www.tiktok.com/@noahstancati/video/7328110144800214278" target="_blank" rel="noopener">
-        <img src="https://www.tiktok.com/api/img/?itemId=7328110144800214278&location=0" alt="Eklipse.GG"
-             onerror="this.style.display='none'; this.parentElement.style.background='#1a1a1a';">
-        <div class="play-overlay">
-          <div class="play-btn-circle">
-            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-          </div>
-        </div>
-      </a>
+      <div class="video-embed-wrap" data-video-id="7328110144800214278">
+        <iframe src="https://www.tiktok.com/player/v1/7328110144800214278" allow="fullscreen" title="Eklipse.GG"></iframe>
+      </div>
       <div class="video-info">
         <div class="view-badge">2.4M Views</div>
         <div class="vid-brand-name">Eklipse.GG</div>
@@ -604,7 +547,7 @@
       <p>I understand how these social media algorithms work, what drives conversions, and how to position a product in a way that feels organic — not like an ad.</p>
     </div>
     <div class="about-photo">
-      <img src="https://raw.githubusercontent.com/noahstancati/mediakit/refs/heads/main/about.jpeg" alt="Noah Stancati">
+      <img src="./about.jpeg" alt="Noah Stancati" loading="eager">
     </div>
   </div>
 </section>
@@ -729,6 +672,24 @@
   <a href="mailto:stankaibusiness@gmail.com?subject=Brand%20Partnership%20Inquiry">stankaibusiness@gmail.com</a>
   <span>© 2025 Noah Stancati · All Rights Reserved</span>
 </div>
+
+<script>
+(function() {
+  var wraps = document.querySelectorAll('.video-embed-wrap[data-video-id]');
+  function send(wrap, type) {
+    var iframe = wrap.querySelector('iframe');
+    if (iframe && iframe.contentWindow) {
+      try {
+        iframe.contentWindow.postMessage({ 'x-tiktok-player': true, type: type }, '*');
+      } catch (e) {}
+    }
+  }
+  wraps.forEach(function(wrap) {
+    wrap.addEventListener('mouseenter', function() { send(wrap, 'play'); });
+    wrap.addEventListener('mouseleave', function() { send(wrap, 'pause'); });
+  });
+})();
+</script>
 
 </body>
 </html>
